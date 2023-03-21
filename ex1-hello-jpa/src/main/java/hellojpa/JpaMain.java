@@ -14,15 +14,18 @@ public class JpaMain {
         EntityManager em = emf.createEntityManager();
 
         EntityTransaction tx = em.getTransaction();
-
         tx.begin();
 
         try {
             //영속
-            Member member = em.find(Member.class, 150L);
-            member.setName("ZZZZZ");
-            System.out.println("==================");
+            Member member = em.find(Member.class, 200L);
+            member.setName("AAAAA");
 
+            em.clear();
+
+            Member member2 = em.find(Member.class, 200L);
+
+            System.out.println("==============");
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
